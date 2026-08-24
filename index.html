@@ -3,69 +3,789 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Jファームシマザキ HPリニューアル モック</title>
+<title>有限会社ジェイファームシマザキ｜北海道別海町の酪農</title>
+<meta name="description" content="1948年、別海町泉川に入植。牛1,200頭・草地490haで、自給飼料中心の循環型酪農を営んでいます。しまざき壮健牛、A2ミルク、ちえのわジェラート。"/>
+<meta name="theme-color" content="#DCE9F2"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="有限会社ジェイファームシマザキ｜北海道別海町の酪農"/>
+<meta property="og:description" content="感謝を、地域へ。先駆けを、次の世代へ。別海町で三代、1,200頭の牛とともに。"/>
+<meta property="og:image" content="https://okudatamiobanzai-web.github.io/jfarm-shimazaki-hp/assets/og.jpg"/>
+<link rel="icon" href="assets/logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;700&family=Fraunces:ital,wght@1,400;1,500;0,400;0,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
 <style>
-  html, body { margin: 0; padding: 0; background: #1c160d; color-scheme: dark; }
-  * { box-sizing: border-box; }
-  a { color: inherit; text-decoration: none; }
-  button { font: inherit; }
-  /* Page-level transitions */
-  @keyframes jf-fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-  @keyframes jf-slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
-  /* Scrollbar (subtle) */
-  main[data-scroll-root]::-webkit-scrollbar { width: 8px; }
-  main[data-scroll-root]::-webkit-scrollbar-thumb { background: rgba(62,47,30,0.18); border-radius: 4px; }
-  main[data-scroll-root]::-webkit-scrollbar-track { background: transparent; }
-  /* Reduce link click feedback */
-  a, button { -webkit-tap-highlight-color: transparent; }
-  input:focus, textarea:focus, select:focus { border-color: var(--c-primary, #6F8E5A) !important; box-shadow: 0 0 0 3px rgba(111,142,90,0.12) !important; }
-  /* ── Narrow (mobile frame) layout overrides ───────────────────────── */
-  main[data-narrow] section { padding-left: 16px !important; padding-right: 16px !important; }
-  main[data-narrow] h1 { font-size: clamp(22px, 6vw, 28px) !important; line-height: 1.45 !important; letter-spacing: 0.01em !important; word-break: keep-all !important; overflow-wrap: anywhere !important; }
-  main[data-narrow] h2 { font-size: clamp(17px, 4.5vw, 20px) !important; word-break: keep-all; }
-  main[data-narrow] h3 { font-size: clamp(15px, 4vw, 17px) !important; word-break: keep-all; }
-  main[data-narrow] p { word-break: keep-all; overflow-wrap: break-word; }
-  /* compact header on mobile */
-  main[data-narrow] header { height: 52px !important; padding: 0 12px !important; gap: 8px !important; }
-  /* collapse 2-col grids */
-  main[data-narrow] section[style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 20px !important; padding-top: clamp(24px, 6vw, 40px) !important; padding-bottom: clamp(24px, 6vw, 40px) !important; }
-  main[data-narrow] section > div[style*="grid-template-columns"],
-  main[data-narrow] section > [style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 20px !important; }
-  /* collapse ltr/rtl alternating layouts */
-  main[data-narrow] [style*="direction: rtl"] { direction: ltr !important; }
-  /* hero heights shrink */
-  main[data-narrow] section[style*="86vh"],
-  main[data-narrow] section[style*="70vh"] { min-height: 480px !important; }
-  /* hide footer 3-col -> 1-col */
-  main[data-narrow] footer > div:first-child { grid-template-columns: 1fr !important; gap: 20px !important; }
-  /* form 2-col fields -> 1 */
-  main[data-narrow] form div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
-  /* card grids auto-fit fine but make timeline 2-col stack */
-  main[data-narrow] section > [style*="minmax(0, 1fr) minmax(0, 1.4fr)"],
-  main[data-narrow] section > [style*="minmax(0, 1fr) minmax(0, 1.2fr)"],
-  main[data-narrow] section > [style*="minmax(0, 1.2fr) minmax(0, 1fr)"],
-  main[data-narrow] section > [style*="minmax(0, 1.1fr) minmax(0, 1fr)"] { grid-template-columns: 1fr !important; }
-  /* side nav on pc frame when within mobile ... n/a */
-  main[data-narrow] dl > div[style*="160px 1fr"] { grid-template-columns: 110px 1fr !important; }
-  main[data-narrow] li[style*="grid-template-columns: 120px 1fr auto"] { grid-template-columns: 78px 1fr auto !important; gap: 10px !important; }
-  @keyframes ig-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+/* ═══ Design tokens ═══════════════════════════════════════════════════
+   挿絵（フラットベクター）から抜いた色。影・枠・箱は使わず、
+   ヘアラインと余白だけで区切る。挿絵が主役、テキストは控えめに。 */
+:root{
+  --paper:#FBF9F4;
+  --paper-warm:#F5F0E5;
+  --sky:#DCE9F2;
+  --ink:#22333F;
+  --ink-body:#41525E;
+  --ink-mute:#8494A0;
+  --sage:#5F7A5E;
+  --sage-soft:#A9BCA1;
+  --ochre:#C08A4A;
+  --blush:#C98F86;
+  --line:#E5E0D2;
+  --line-soft:#EFEBDF;
+  --f-display:"Zen Old Mincho","Hiragino Mincho ProN",serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",system-ui,sans-serif;
+  --f-latin:"EB Garamond",Georgia,serif;
+  --w:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{
+  background:var(--paper);color:var(--ink-body);
+  font-family:var(--f-body);font-size:15.5px;line-height:2.0;
+  letter-spacing:.02em;font-feature-settings:"palt";
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+h1,h2,h3,h4{font-family:var(--f-display);color:var(--ink);font-weight:600;line-height:1.6}
+
+/* ── kicker（英字イタリック）＋見出しの型 ─────────────────────────── */
+.kicker{
+  font-family:var(--f-latin);font-style:italic;font-size:17px;
+  color:var(--sage);letter-spacing:.04em;
+}
+.sec-head{margin-bottom:clamp(36px,6vw,64px)}
+.sec-head h2{font-size:clamp(24px,3.6vw,34px);letter-spacing:.08em;margin-top:6px}
+.sec-head .lede{margin-top:16px;color:var(--ink-body);max-width:38em}
+.center{text-align:center}
+.center .lede{margin-left:auto;margin-right:auto}
+
+section{padding:clamp(72px,11vw,130px) 0}
+.hairline{border:none;border-top:1px solid var(--line);max-width:var(--w);margin:0 auto;width:calc(100% - 48px)}
+
+/* ── reveal ──────────────────────────────────────────────────────── */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.rv[data-in]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ── header ──────────────────────────────────────────────────────── */
+header{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  transition:background .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+header.solid{background:rgba(251,249,244,.92);backdrop-filter:blur(10px);border-color:var(--line-soft)}
+.hd{max-width:1240px;margin:0 auto;padding:0 clamp(16px,3vw,32px);height:68px;display:flex;align-items:center;justify-content:space-between}
+.hd-brand{display:flex;align-items:baseline;gap:10px}
+.hd-brand .ja{font-family:var(--f-display);font-weight:600;font-size:16.5px;color:var(--ink);letter-spacing:.06em}
+.hd-brand .en{font-family:var(--f-latin);font-style:italic;font-size:12.5px;color:var(--ink-mute)}
+nav.pc{display:flex;gap:clamp(14px,2vw,26px);align-items:center}
+nav.pc a{font-size:13px;letter-spacing:.12em;color:var(--ink);opacity:.82;transition:opacity .2s}
+nav.pc a:hover{opacity:1}
+nav.pc a.cta{
+  font-family:var(--f-display);border:1px solid var(--ink);border-radius:999px;
+  padding:7px 20px;opacity:1;transition:background .25s,color .25s;
+}
+nav.pc a.cta:hover{background:var(--ink);color:var(--paper)}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:10px}
+.burger span{display:block;width:24px;height:1.5px;background:var(--ink);margin:6px 0;transition:.3s}
+/* mobile menu */
+.mmenu{
+  position:fixed;inset:0;z-index:49;background:var(--paper);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:26px;
+  opacity:0;pointer-events:none;transition:opacity .35s ease;
+}
+.mmenu.open{opacity:1;pointer-events:auto}
+.mmenu a{font-family:var(--f-display);font-size:20px;letter-spacing:.14em;color:var(--ink)}
+.mmenu .en{font-family:var(--f-latin);font-style:italic;font-size:12px;color:var(--sage);display:block;text-align:center;letter-spacing:.06em}
+@media(max-width:820px){nav.pc{display:none}.burger{display:block}}
+body.menu-open{overflow:hidden}
+body.menu-open .burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* ── hero（ポスターの型：左上に地名＋イタリック副題） ───────────────── */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--sky)}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
+.hero-copy{
+  position:absolute;top:0;left:0;right:0;
+  padding:calc(68px + clamp(28px,7vh,72px)) clamp(24px,6vw,72px) 0;
+}
+.hero-copy .eyebrow{
+  font-family:var(--f-latin);font-style:italic;font-size:clamp(14px,1.6vw,18px);
+  color:var(--ink);opacity:.75;letter-spacing:.05em;
+}
+.hero-copy h1{
+  margin-top:14px;font-size:clamp(30px,5.2vw,54px);font-weight:600;
+  letter-spacing:.1em;line-height:1.7;
+}
+.hero-copy .lede{
+  margin-top:18px;font-family:var(--f-display);font-size:clamp(14px,1.7vw,17px);
+  color:var(--ink);opacity:.8;letter-spacing:.14em;
+}
+.hero-cue{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-latin);font-style:italic;font-size:12px;letter-spacing:.28em;
+  color:var(--ink);opacity:.55;
+}
+.hero-cue::after{
+  content:"";display:block;width:1px;height:34px;margin:8px auto 0;
+  background:var(--ink);opacity:.5;animation:cue 2.2s ease-in-out infinite;
+  transform-origin:top;
+}
+@keyframes cue{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* ── philosophy ──────────────────────────────────────────────────── */
+.phil{padding-top:clamp(88px,13vw,150px)}
+.phil-lines{margin-top:34px}
+.phil-lines p{
+  font-family:var(--f-display);color:var(--ink);
+  font-size:clamp(19px,2.8vw,27px);letter-spacing:.14em;line-height:2.3;
+}
+.phil-note{margin-top:34px;color:var(--ink-mute);font-size:14px;max-width:36em;margin-inline:auto}
+
+/* ── numbers ─────────────────────────────────────────────────────── */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);max-width:var(--w);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.num{padding:10px clamp(10px,2vw,28px);border-left:1px solid var(--line)}
+.num:first-child{border-left:none}
+.num .v{font-family:var(--f-latin);font-size:clamp(30px,4.4vw,46px);color:var(--ink);line-height:1.2}
+.num .v small{font-family:var(--f-display);font-size:.45em;margin-left:2px}
+.num .l{font-family:var(--f-display);font-size:14px;color:var(--ink);margin-top:6px;letter-spacing:.1em}
+.num .n{font-size:12px;color:var(--ink-mute);line-height:1.7;margin-top:4px}
+@media(max-width:720px){
+  .nums{grid-template-columns:1fr 1fr;row-gap:34px}
+  .num:nth-child(3){border-left:none}
+}
+
+/* ── 挿絵共通 ────────────────────────────────────────────────────── */
+.illust{position:relative}
+.illust img{width:100%;height:auto}
+.illust .cap{
+  margin-top:10px;text-align:right;
+  font-family:var(--f-latin);font-style:italic;font-size:12.5px;color:var(--ink-mute);
+  letter-spacing:.05em;
+}
+
+/* ── business divisions ──────────────────────────────────────────── */
+.div-row{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);
+  align-items:center;padding:clamp(44px,7vw,84px) 0;
+}
+.div-row + .div-row{border-top:1px solid var(--line-soft)}
+.div-row.flip .illust{order:2}
+.div-row .no{
+  font-family:var(--f-latin);font-style:italic;font-size:15px;color:var(--ochre);letter-spacing:.1em;
+}
+.div-row h3{font-size:clamp(20px,2.4vw,25px);letter-spacing:.1em;margin-top:6px}
+.div-row .dlede{font-family:var(--f-display);color:var(--sage);font-size:15px;letter-spacing:.08em;margin-top:6px}
+.div-row .body{margin-top:16px;font-size:14.5px}
+.dstats{display:flex;gap:0;margin-top:24px;border-top:1px solid var(--line);padding-top:16px}
+.dstats div{flex:1;padding-right:14px}
+.dstats dt{font-size:11.5px;color:var(--ink-mute);letter-spacing:.1em}
+.dstats dd{font-family:var(--f-display);color:var(--ink);font-size:15.5px;margin-top:2px;letter-spacing:.04em}
+@media(max-width:820px){
+  .div-row{grid-template-columns:1fr;gap:22px}
+  .div-row.flip .illust{order:0}
+}
+
+/* ── soukengyu ───────────────────────────────────────────────────── */
+.souken{background:var(--paper-warm)}
+.souken-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:clamp(30px,5vw,54px)}
+.souken-grid .f{border-left:1px solid var(--line);padding:8px clamp(14px,2.4vw,30px)}
+.souken-grid .f:first-child{border-left:none}
+.souken-grid .fv{font-family:var(--f-latin);font-size:clamp(30px,4vw,44px);color:var(--ink)}
+.souken-grid .fv small{font-family:var(--f-display);font-size:.42em;margin-left:2px}
+.souken-grid .fl{font-family:var(--f-display);font-size:13.5px;color:var(--ink);margin-top:4px;letter-spacing:.1em}
+.souken-grid .fn{font-size:12px;color:var(--ink-mute);margin-top:2px;line-height:1.7}
+.channels{margin-top:clamp(34px,5vw,56px);border-top:1px solid var(--line)}
+.channels li{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+.channels .cn{font-family:var(--f-display);color:var(--ink);font-size:16px;letter-spacing:.06em}
+.channels .cd{font-size:12.5px;color:var(--sage);margin-top:2px}
+.channels .cm{font-size:13.5px;color:var(--ink-body);align-self:center}
+@media(max-width:640px){
+  .channels li{grid-template-columns:1fr;gap:4px}
+  .souken-grid{grid-template-columns:1fr;row-gap:26px}
+  .souken-grid .f{border-left:none;border-top:1px solid var(--line);padding:16px 0 0}
+  .souken-grid .f:first-child{border-top:none;padding-top:0}
+}
+
+/* ── winter divider（一枚絵＋ことば） ──────────────────────────────── */
+.winter{position:relative;padding:0}
+.winter img{width:100%;height:clamp(380px,62vh,640px);object-fit:cover}
+.winter .quote{
+  position:absolute;inset:auto 0 clamp(30px,7vw,64px) 0;text-align:center;padding:0 24px;
+}
+.winter .quote p{
+  font-family:var(--f-display);color:var(--ink);font-size:clamp(17px,2.6vw,24px);
+  letter-spacing:.18em;line-height:2.2;
+}
+.winter .quote .who{
+  margin-top:10px;font-size:12.5px;color:var(--ink-body);letter-spacing:.14em;font-family:var(--f-body);
+}
+
+/* ── community ───────────────────────────────────────────────────── */
+.comm-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(20px,3.5vw,44px);align-items:end}
+@media(max-width:720px){.comm-grid{grid-template-columns:1fr}}
+.progs{margin-top:clamp(40px,6vw,66px);border-top:1px solid var(--line)}
+.progs li{display:grid;grid-template-columns:120px 1fr auto;gap:clamp(14px,3vw,36px);padding:24px 0;border-bottom:1px solid var(--line)}
+.progs .pk{font-family:var(--f-latin);font-style:italic;font-size:13px;color:var(--ochre);padding-top:4px}
+.progs h4{font-size:16.5px;letter-spacing:.06em}
+.progs .pb{font-size:13.5px;margin-top:6px;max-width:44em}
+.progs .pm{text-align:right;font-size:12px;color:var(--ink-mute);white-space:nowrap;padding-top:4px;line-height:1.9}
+@media(max-width:640px){
+  .progs li{grid-template-columns:1fr;gap:4px}
+  .progs .pm{text-align:left}
+}
+
+/* ── history ─────────────────────────────────────────────────────── */
+.hist{background:var(--paper-warm)}
+.tl{margin-top:clamp(30px,5vw,50px);border-left:1px solid var(--line);margin-left:6px}
+.tl li{position:relative;padding:0 0 clamp(28px,4vw,42px) clamp(24px,4vw,44px)}
+.tl li::before{
+  content:"";position:absolute;left:-3.5px;top:14px;width:6px;height:6px;border-radius:50%;
+  background:var(--sage);
+}
+.tl .y{font-family:var(--f-latin);font-size:20px;color:var(--sage);letter-spacing:.04em}
+.tl h4{font-size:16px;margin-top:2px;letter-spacing:.05em}
+.tl p{font-size:13.5px;color:var(--ink-body);margin-top:4px;max-width:42em}
+
+/* ── recruit ─────────────────────────────────────────────────────── */
+.rec-hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+@media(max-width:820px){.rec-hero{grid-template-columns:1fr}}
+.rec-hero h2{font-size:clamp(23px,3.2vw,31px);letter-spacing:.1em;line-height:1.9;margin-top:6px}
+.rec-hero .lede{margin-top:18px;font-size:14.5px}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(44px,7vw,80px)}
+.feat .f{border-left:1px solid var(--line);padding:4px clamp(14px,2vw,26px)}
+.feat .f:first-child{border-left:none}
+.feat h4{font-size:15px;letter-spacing:.08em}
+.feat p{font-size:12.5px;color:var(--ink-body);margin-top:8px;line-height:1.9}
+@media(max-width:820px){
+  .feat{grid-template-columns:1fr 1fr;row-gap:28px}
+  .feat .f:nth-child(3){border-left:none}
+}
+@media(max-width:480px){
+  .feat{grid-template-columns:1fr}
+  .feat .f{border-left:none;border-top:1px solid var(--line);padding:16px 0 0}
+  .feat .f:first-child{border-top:none;padding-top:0}
+}
+.jobs{margin-top:clamp(48px,7vw,84px);border-top:1px solid var(--line)}
+.jobs li{display:grid;grid-template-columns:1.1fr 2fr auto;gap:clamp(14px,3vw,36px);padding:22px 0;border-bottom:1px solid var(--line);align-items:center}
+.jobs h4{font-size:16.5px;letter-spacing:.05em}
+.jobs .jt{font-size:11.5px;color:var(--sage);margin-top:2px;letter-spacing:.08em}
+.jobs .jb{font-size:13px;color:var(--ink-body)}
+.jobs .js{text-align:right;white-space:nowrap}
+.jobs .js .sal{font-family:var(--f-display);color:var(--ink);font-size:15px}
+.jobs .js .exp{font-size:11.5px;color:var(--ink-mute);margin-top:2px}
+@media(max-width:720px){
+  .jobs li{grid-template-columns:1fr;gap:6px}
+  .jobs .js{text-align:left}
+}
+.bene{display:grid;grid-template-columns:repeat(3,1fr);gap:14px clamp(20px,3vw,40px);margin-top:clamp(40px,6vw,64px)}
+.bene div{border-bottom:1px solid var(--line-soft);padding-bottom:10px;display:flex;gap:14px;align-items:baseline}
+.bene dt{font-size:12px;color:var(--ink-mute);letter-spacing:.08em;white-space:nowrap;min-width:4.5em}
+.bene dd{font-size:13px;color:var(--ink)}
+@media(max-width:820px){.bene{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.bene{grid-template-columns:1fr}}
+/* faq */
+.faq{margin-top:clamp(48px,7vw,84px);border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;
+  gap:20px;padding:18px 2px;font-family:var(--f-display);color:var(--ink);font-size:15px;letter-spacing:.04em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";font-family:var(--f-latin);font-size:20px;color:var(--sage);transition:transform .3s;flex:none;
+}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 2px 20px;font-size:13.5px;color:var(--ink-body);max-width:46em}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:clamp(40px,6vw,64px)}
+.flow .s{border-left:1px solid var(--line);padding:2px 14px 6px}
+.flow .s:first-child{border-left:none}
+.flow .no{font-family:var(--f-latin);font-style:italic;font-size:14px;color:var(--ochre)}
+.flow h5{font-family:var(--f-display);color:var(--ink);font-size:13.5px;font-weight:600;margin-top:4px;letter-spacing:.04em}
+.flow p{font-size:11.5px;color:var(--ink-mute);line-height:1.8;margin-top:6px}
+@media(max-width:900px){
+  .flow{grid-template-columns:repeat(3,1fr);row-gap:24px}
+  .flow .s:nth-child(4){border-left:none}
+}
+@media(max-width:540px){
+  .flow{grid-template-columns:1fr 1fr}
+  .flow .s:nth-child(odd){border-left:none}
+}
+.rec-cta{margin-top:clamp(48px,7vw,80px);text-align:center}
+.rec-cta .tel{font-family:var(--f-latin);font-size:clamp(26px,4vw,36px);color:var(--ink);letter-spacing:.04em}
+.rec-cta .note{font-size:12.5px;color:var(--ink-mute);margin-top:6px}
+.btn{
+  display:inline-block;margin-top:22px;font-family:var(--f-display);font-size:15px;letter-spacing:.14em;
+  color:var(--ink);border:1px solid var(--ink);border-radius:999px;padding:13px 46px;
+  transition:background .25s,color .25s;
+}
+.btn:hover{background:var(--ink);color:var(--paper)}
+
+/* ── news ────────────────────────────────────────────────────────── */
+.news li{display:grid;grid-template-columns:110px 90px 1fr;gap:clamp(12px,3vw,30px);padding:16px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+.news .d{font-family:var(--f-latin);font-size:13.5px;color:var(--ink-mute)}
+.news .t{font-size:11px;color:var(--sage);letter-spacing:.14em;border:1px solid var(--sage-soft);border-radius:999px;text-align:center;padding:1px 0}
+.news .x{font-size:14px;color:var(--ink)}
+@media(max-width:560px){
+  .news li{grid-template-columns:96px 1fr}
+  .news .t{display:none}
+}
+
+/* ── footer ──────────────────────────────────────────────────────── */
+footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:clamp(60px,9vw,110px)}
+.ft{max-width:var(--w);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.ft-brand{font-family:var(--f-display);font-size:19px;color:var(--ink);letter-spacing:.1em}
+.ft-en{font-family:var(--f-latin);font-style:italic;font-size:13px;color:var(--ink);opacity:.6;margin-top:2px}
+.ft-info{margin-top:22px;font-size:13.5px;color:var(--ink);opacity:.85;line-height:2.2}
+.ft-nav{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(34,51,63,.14)}
+.ft-nav a{font-size:12.5px;letter-spacing:.1em;color:var(--ink);opacity:.7}
+.ft-nav a:hover{opacity:1}
+.ft-copy{margin-top:36px;font-family:var(--f-latin);font-size:11.5px;color:var(--ink);opacity:.5;letter-spacing:.08em}
+.ft-mock{margin-top:10px;font-size:11px;color:var(--ink);opacity:.45}
 </style>
 </head>
 <body>
-<div id="root"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<header id="hd">
+  <div class="hd">
+    <a class="hd-brand" href="#top">
+      <span class="ja">ジェイファームシマザキ</span>
+      <span class="en">J-Farm Shimazaki</span>
+    </a>
+    <nav class="pc">
+      <a href="#philosophy">理念</a>
+      <a href="#business">事業内容</a>
+      <a href="#soukengyu">壮健牛</a>
+      <a href="#community">地域とともに</a>
+      <a href="#history">沿革</a>
+      <a href="#news">お知らせ</a>
+      <a class="cta" href="#recruit">採用情報</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mmenu" id="mmenu">
+  <a href="#philosophy"><span class="en">Philosophy</span>理念</a>
+  <a href="#business"><span class="en">Business</span>事業内容</a>
+  <a href="#soukengyu"><span class="en">Brand</span>壮健牛</a>
+  <a href="#community"><span class="en">Community</span>地域とともに</a>
+  <a href="#history"><span class="en">History</span>沿革</a>
+  <a href="#news"><span class="en">News</span>お知らせ</a>
+  <a href="#recruit"><span class="en">Recruit</span>採用情報</a>
+</div>
 
-<script type="text/babel" src="src/config.jsx"></script>
-<script type="text/babel" src="src/components.jsx"></script>
-<script type="text/babel" src="src/instagram.jsx"></script>
-<script type="text/babel" src="src/pages.jsx"></script>
-<script type="text/babel" src="src/pages2.jsx"></script>
-<script type="text/babel" src="src/app.jsx"></script>
+<!-- ═══ HERO ═══ -->
+<div class="hero" id="top">
+  <img src="assets/illust/hero.webp" width="1376" height="768" alt="別海町の牧場風景。牧草地にホルスタインが放牧され、一本道の先に赤い屋根の牛舎とサイロが見える" fetchpriority="high"/>
+  <div class="hero-copy">
+    <p class="eyebrow">Betsukai, Hokkaido — Since 1948</p>
+    <h1>感謝を、地域へ。<br/>先駆けを、次の世代へ。</h1>
+    <p class="lede">別海町で三代、1,200頭の牛とともに。</p>
+  </div>
+  <div class="hero-cue">Scroll</div>
+</div>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<section class="phil center" id="philosophy">
+  <div class="wrap">
+    <p class="kicker rv">Our Philosophy</p>
+    <h2 class="rv" style="font-size:clamp(20px,2.6vw,26px);letter-spacing:.14em;margin-top:6px">経営理念</h2>
+    <div class="phil-lines">
+      <p class="rv">感謝の気持ちを大切にし</p>
+      <p class="rv" data-delay="120">地域とともに</p>
+      <p class="rv" data-delay="240">先駆者として、常にワクワク魅力ある牧場を目指す</p>
+    </div>
+    <p class="phil-note rv">1948年、初代・島崎昭七が別海町泉川に入植してから三代。<br/>
+    自給飼料中心の循環型酪農を軸に、肉牛・加工販売・家畜流通へと歩みを広げてきました。</p>
+  </div>
+</section>
+
+<!-- ═══ NUMBERS ═══ -->
+<div class="nums" id="numbers">
+  <div class="num rv"><div class="v" data-count="1948">0</div><div class="l">創業</div><div class="n">昭和23年、初代・昭七が入植</div></div>
+  <div class="num rv" data-delay="100"><div class="v" data-count="1200">0<small>頭</small></div><div class="l">総飼育頭数</div><div class="n">成牛（搾乳牛）約500頭を含む</div></div>
+  <div class="num rv" data-delay="200"><div class="v" data-count="490">0<small>ha</small></div><div class="l">自社草地</div><div class="n">所有290ha＋借地200ha</div></div>
+  <div class="num rv" data-delay="300"><div class="v" data-count="4360">0<small>t</small></div><div class="l">年間生乳生産</div><div class="n">粗飼料はほぼ全量自給</div></div>
+</div>
+
+<!-- ═══ BUSINESS ═══ -->
+<section id="business">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Our Business</p>
+      <h2>事業内容</h2>
+      <p class="lede">酪農・肉牛・加工販売・家畜流通。生産から食卓まで、循環で繋ぐ4部門。本社牧場・第2牧場・共栄牧場の3拠点で、牛のライフステージ別に専門施設を整備しています。</p>
+    </div>
+
+    <div class="div-row">
+      <div class="illust rv">
+        <img src="assets/illust/dairy.webp" width="1200" height="896" alt="明るい牛舎で餌を食べるホルスタインと、餌を寄せるスタッフ" loading="lazy"/>
+        <p class="cap">The morning barn — 朝の牛舎</p>
+      </div>
+      <div class="rv" data-delay="120">
+        <p class="no">01 — Dairy</p>
+        <h3>酪農部門</h3>
+        <p class="dlede">自給粗飼料中心の循環型酪農</p>
+        <p class="body">所有290ha＋借地200haの草地で生産した粗飼料を中心に、堆肥還元による循環型の酪農を実践。2024年からはA2ミルクの生産も開始しました。</p>
+        <dl class="dstats">
+          <div><dt>搾乳牛</dt><dd>約500頭</dd></div>
+          <div><dt>総飼育頭数</dt><dd>約1,200頭</dd></div>
+          <div><dt>年間生乳</dt><dd>約4,360t</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="div-row flip">
+      <div class="illust rv">
+        <img src="assets/illust/beef.webp" width="1200" height="896" alt="丘の放牧地で草を食む黒毛の牛たち" loading="lazy"/>
+        <p class="cap">On the hill pasture — 放牧地にて</p>
+      </div>
+      <div class="rv" data-delay="120">
+        <p class="no">02 — Beef</p>
+        <h3>肉牛部門</h3>
+        <p class="dlede">黒毛和種×ホル交雑「しまざき壮健牛」</p>
+        <p class="body">通常より半年長い約30ヶ月の肥育期間。放牧地を歩かせて十分な運動をさせながら育てることで、赤身の旨味を引き出す壮健飼育を実践します。</p>
+        <dl class="dstats">
+          <div><dt>肥育期間</dt><dd>約30ヶ月</dd></div>
+          <div><dt>ブランド</dt><dd>しまざき壮健牛</dd></div>
+          <div><dt>別称</dt><dd>別海ハーフ和牛</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="div-row">
+      <div class="illust rv">
+        <img src="assets/illust/shop.webp" width="1200" height="896" alt="夕暮れの弟子屈町、灯りのともる直営焼肉店と配送の軽バン" loading="lazy"/>
+        <p class="cap">Dusk at Teshikaga — 弟子屈の直営店</p>
+      </div>
+      <div class="rv" data-delay="120">
+        <p class="no">03 — Process &amp; Sales</p>
+        <h3>加工・販売部門</h3>
+        <p class="dlede">直営焼肉店「牛肉本舗くろ」＋EC</p>
+        <p class="body">2009年、弟子屈町に自社加工場を備えた直営焼肉店を開業。同時にECを立ち上げ、全国の消費者へ直接お届けする仕組みを整えました。</p>
+        <dl class="dstats">
+          <div><dt>店舗</dt><dd>弟子屈町</dd></div>
+          <div><dt>開業</dt><dd>2009年</dd></div>
+          <div><dt>販路</dt><dd>全国</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="div-row flip">
+      <div class="illust rv">
+        <img src="assets/illust/dist.webp" width="1200" height="896" alt="牧草地の中の一本道を走る家畜運搬車" loading="lazy"/>
+        <p class="cap">Between the farms — 牧場と牧場を繋ぐ</p>
+      </div>
+      <div class="rv" data-delay="120">
+        <p class="no">04 — Distribution</p>
+        <h3>家畜流通部門</h3>
+        <p class="dlede">地域の畜産を流通から支える</p>
+        <p class="body">二代目が家畜商の資格を取得して以来、子牛の売買や肥育事業を通じて、地域の健全な畜産経営の基盤づくりに貢献しています。</p>
+        <dl class="dstats">
+          <div><dt>対応</dt><dd>生体・枝肉</dd></div>
+          <div><dt>範囲</dt><dd>道東広域</dd></div>
+          <div><dt>連携</dt><dd>組合仲間</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOUKENGYU ═══ -->
+<section class="souken" id="soukengyu">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <p class="kicker">Our Brand</p>
+      <h2>しまざき壮健牛</h2>
+      <p class="lede">健やかで、壮らかに。別海の風と草と、半年長い肥育時間が育てる味。<br/>
+      放牧運動を取り入れた飼育方法と、約30ヶ月というじっくりした肥育時間が、その名にふさわしい肉質をつくります。</p>
+    </div>
+    <div class="souken-grid">
+      <div class="f rv"><div class="fv" data-count="30">0<small>ヶ月</small></div><div class="fl">肥育期間</div><div class="fn">通常より半年長く、じっくりと</div></div>
+      <div class="f rv" data-delay="120"><div class="fv" data-count="490">0<small>ha</small></div><div class="fl">草地・放牧地</div><div class="fn">所有290ha＋借地200ha</div></div>
+      <div class="f rv" data-delay="240"><div class="fv" data-count="2">0<small>系統</small></div><div class="fl">黒毛和種×ホル交雑</div><div class="fn">別海ハーフ和牛として</div></div>
+    </div>
+    <ul class="channels rv">
+      <li>
+        <div><p class="cn">牛肉本舗 くろ</p><p class="cd">弟子屈町・直営焼肉店</p></div>
+        <p class="cm">生産者の店として、希少部位もその日の状態でご提供。</p>
+      </li>
+      <li>
+        <div><p class="cn">オンラインストア</p><p class="cd">shimazaki-gyu.com</p></div>
+        <p class="cm">全国配送・贈答にも。定期便のお問い合わせも受付中。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ WINTER DIVIDER ═══ -->
+<div class="winter">
+  <img src="assets/illust/winter.webp" width="1376" height="768" alt="雪に覆われた冬の牧場。夜明けの空の下、灯りのともる牛舎へ向かうスタッフ" loading="lazy"/>
+  <div class="quote rv">
+    <p>祖父が受け継いできた酪農を、<br/>次の世代に渡したい。</p>
+    <p class="who">三代目代表　島崎 洋介</p>
+  </div>
+</div>
+
+<!-- ═══ COMMUNITY ═══ -->
+<section id="community">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">With the Community</p>
+      <h2>地域とともに</h2>
+      <p class="lede">別海の地で、酪農家として、地域の一員として。小さな取り組みを、ひとつひとつ積み重ねています。</p>
+    </div>
+    <div class="comm-grid">
+      <div class="illust rv">
+        <img src="assets/illust/community.webp" width="1200" height="896" alt="牧場を訪れた子どもたちが子牛と触れ合い、奥ではジェラートの売店に家族連れが集う" loading="lazy"/>
+        <p class="cap">Open farm day — 牧場のひらく日</p>
+      </div>
+      <div class="illust rv" data-delay="150">
+        <img src="assets/illust/gelato.webp" width="1024" height="1024" alt="窓辺に置かれた二つのジェラートカップと小さな牛乳瓶" loading="lazy"/>
+        <p class="cap">Chienowa gelato — ちえのわのジェラート</p>
+      </div>
+    </div>
+    <ul class="progs">
+      <li class="rv">
+        <p class="pk">Project 01</p>
+        <div><h4>ちえのわ事業協同組合</h4><p class="pb">別海の酪農家に呼びかけ、共同で立ち上げた組合。地域の素材を使ったジェラートを開発・販売し、酪農と地域経済の循環をつくっています。</p></div>
+        <p class="pm">2018年設立<br/>組合員5名</p>
+      </li>
+      <li class="rv">
+        <p class="pk">Project 02</p>
+        <div><h4>酪農教育ファーム認証</h4><p class="pb">小中学生の職業体験を受け入れ、牛と暮らす日常、命の重みを伝える学びの場を提供しています。次世代への種まきとして。</p></div>
+        <p class="pm">2016年より<br/>年間約350名</p>
+      </li>
+      <li class="rv">
+        <p class="pk">Project 03</p>
+        <div><h4>上西春別中「ミルフェス」</h4><p class="pb">地元中学校の家庭科授業に講師として参加。乳和食を題材に、地元の食材と食文化の魅力を伝えています。</p></div>
+        <p class="pm">2020年より<br/>年2回</p>
+      </li>
+      <li class="rv">
+        <p class="pk">Project 04</p>
+        <div><h4>地元マルシェ・グルメイベント</h4><p class="pb">別海町・近隣の飲食店と連携し、マルシェやイベントへ出店。地域の食を発信する継続的な取り組みです。</p></div>
+        <p class="pm">2015年より<br/>年12回前後</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ HISTORY ═══ -->
+<section class="hist" id="history">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Since 1948</p>
+      <h2>沿革</h2>
+    </div>
+    <ul class="tl">
+      <li class="rv"><p class="y">1948</p><h4>初代・島崎昭七、別海町泉川地区に入植</h4><p>長野県出身。戦後まもない昭和23年、酪農開拓者として荒地を切り拓き、酪農を開始。</p></li>
+      <li class="rv"><p class="y">1980</p><h4>二代目・美昭が経営参画</h4><p>機械化を進め、牧場の基盤を拡張。酪農・肉牛の二本柱を育てる。</p></li>
+      <li class="rv"><p class="y">2005</p><h4>有限会社ジェイファームシマザキ設立</h4><p>法人化。酪農部門・肉牛部門・家畜流通部門の3部門体制を確立。</p></li>
+      <li class="rv"><p class="y">2009</p><h4>直営焼肉店「牛肉本舗くろ」開業、EC開始</h4><p>弟子屈町市街に直営店を開業。自社加工場を備え、全国の消費者へ直接発送する仕組みを整える。</p></li>
+      <li class="rv"><p class="y">2018</p><h4>ちえのわ事業協同組合 設立</h4><p>牧場主の呼びかけで地元酪農家有志と設立。搾りたて生乳のジェラート事業を展開。</p></li>
+      <li class="rv"><p class="y">2021</p><h4>三代目・島崎洋介が経営継承</h4><p>「祖父が受け継いできた酪農を守りたい」。研修牧場構想・ダイバーシティ推進を掲げ、新章へ。</p></li>
+      <li class="rv"><p class="y">2024</p><h4>A2ミルクの生産を開始</h4><p>次世代に選ばれる酪農を目指し、新しい付加価値づくりへ。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ RECRUIT ═══ -->
+<section id="recruit">
+  <div class="wrap">
+    <div class="rec-hero">
+      <div class="rv">
+        <p class="kicker">Join Us</p>
+        <h2>酪農を、次の世代へ。<br/>仲間を、本気で育てます。</h2>
+        <p class="lede">搾乳・育成・哺育の役割分業制で、未経験でも一歩ずつ。<br/>研修牧場として、独立まで伴走します。</p>
+      </div>
+      <div class="illust rv" data-delay="150">
+        <img src="assets/illust/recruit.webp" width="1264" height="848" alt="朝日の差し込む哺育舎で、子牛にミルクを与える若いスタッフ" loading="lazy"/>
+        <p class="cap">First light, first feeding — 朝いちばんの哺乳</p>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="f rv"><h4>役割分業制</h4><p>搾乳／育成／哺育に分かれた業務体系で、未経験者も着実にステップアップ。</p></div>
+      <div class="f rv" data-delay="100"><h4>権限と目標管理</h4><p>場長権限を明確化し、定例MTGで目標を共有。意思決定が早い。</p></div>
+      <div class="f rv" data-delay="200"><h4>ダイバーシティ</h4><p>性別・年齢・経歴を問わず、酪農に向き合う仲間を歓迎します。</p></div>
+      <div class="f rv" data-delay="300"><h4>研修牧場構想</h4><p>新規就農希望者を仲間として育て、独立まで伴走する仕組みを整備中。</p></div>
+    </div>
+
+    <ul class="jobs rv">
+      <li>
+        <div><h4>搾乳スタッフ</h4><p class="jt">正社員</p></div>
+        <p class="jb">パーラー・ロボット併用で、朝夕2回の搾乳を担当。日々の観察力が牛の健康を守ります。</p>
+        <div class="js"><p class="sal">月給 22万円〜</p><p class="exp">未経験可</p></div>
+      </li>
+      <li>
+        <div><h4>育成・哺育スタッフ</h4><p class="jt">正社員</p></div>
+        <p class="jb">子牛の哺育から育成までを担当。一頭ずつの成長を見守るやりがいのある仕事です。</p>
+        <div class="js"><p class="sal">月給 23万円〜</p><p class="exp">未経験可</p></div>
+      </li>
+      <li>
+        <div><h4>場長候補（幹部候補）</h4><p class="jt">正社員</p></div>
+        <p class="jb">将来の場長候補として、現場運営・人材育成・経営判断に携わっていただきます。</p>
+        <div class="js"><p class="sal">月給 30万円〜</p><p class="exp">畜産経験3年以上</p></div>
+      </li>
+      <li>
+        <div><h4>新規就農研修生</h4><p class="jt">研修生</p></div>
+        <p class="jb">研修牧場構想に基づき、独立就農まで伴走。住居・車両のサポートあり。</p>
+        <div class="js"><p class="sal">研修手当 月18万円〜</p><p class="exp">不問</p></div>
+      </li>
+    </ul>
+
+    <dl class="bene rv">
+      <div><dt>勤務時間</dt><dd>変形労働制 実働8時間</dd></div>
+      <div><dt>休日</dt><dd>月8日（希望制）・年末年始・夏季</dd></div>
+      <div><dt>賞与</dt><dd>年2回＋決算賞与</dd></div>
+      <div><dt>社会保険</dt><dd>健康・厚生年金・雇用・労災 完備</dd></div>
+      <div><dt>住居補助</dt><dd>社宅・家賃補助・引越し費用補助</dd></div>
+      <div><dt>車両補助</dt><dd>入社後の車購入補助制度</dd></div>
+      <div><dt>研修</dt><dd>入社後3ヶ月のOJT＋定例勉強会</dd></div>
+      <div><dt>有給休暇</dt><dd>半年後10日付与（取得率80%以上）</dd></div>
+      <div><dt>福利厚生</dt><dd>健康診断・制服貸与ほか</dd></div>
+    </dl>
+
+    <div class="flow rv">
+      <div class="s"><p class="no">01</p><h5>エントリー</h5><p>フォームまたはお電話で。即日</p></div>
+      <div class="s"><p class="no">02</p><h5>書類選考</h5><p>履歴書・職務経歴書など。1〜3日</p></div>
+      <div class="s"><p class="no">03</p><h5>オンライン面談</h5><p>代表・場長と約1時間</p></div>
+      <div class="s"><p class="no">04</p><h5>現地見学・体験</h5><p>2〜3日の体験就業。交通費支給</p></div>
+      <div class="s"><p class="no">05</p><h5>最終面談</h5><p>条件確認とすり合わせ</p></div>
+      <div class="s"><p class="no">06</p><h5>内定・入社</h5><p>住居・引越しをサポート</p></div>
+    </div>
+
+    <div class="faq rv">
+      <details>
+        <summary>酪農未経験でも大丈夫ですか？</summary>
+        <p class="a">約6割のスタッフが未経験入社です。OJTと役割分業制により、段階的に仕事を覚えられます。</p>
+      </details>
+      <details>
+        <summary>移住サポートはありますか？</summary>
+        <p class="a">社宅提供・引越し費用補助・車両購入補助など、移住を前提とした支援制度を整えています。</p>
+      </details>
+      <details>
+        <summary>将来、独立することは可能？</summary>
+        <p class="a">研修牧場構想として、独立就農までの伴走プログラムを準備中です。まずはご相談ください。</p>
+      </details>
+      <details>
+        <summary>見学だけでも可能ですか？</summary>
+        <p class="a">もちろん歓迎します。日程はお電話でお問い合わせください。</p>
+      </details>
+    </div>
+
+    <div class="rec-cta rv" id="contact">
+      <p class="kicker">Contact</p>
+      <p class="tel"><a href="tel:0153773837">015-377-3837</a></p>
+      <p class="note">採用・見学・お取引のご相談はお電話にて（FAX 015-377-2810）</p>
+      <a class="btn" href="tel:0153773837">応募・見学の相談をする</a>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline"/>
+
+<!-- ═══ NEWS ═══ -->
+<section id="news" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">News</p>
+      <h2>お知らせ</h2>
+    </div>
+    <ul class="news rv">
+      <li><p class="d">2026.04.12</p><p class="t">日々</p><p class="x">春の哺育シーズン、子牛が次々と生まれています</p></li>
+      <li><p class="d">2026.04.05</p><p class="t">採用</p><p class="x">採用説明会を弟子屈町「牛肉本舗くろ」にて開催</p></li>
+      <li><p class="d">2026.03.28</p><p class="t">商品</p><p class="x">A2ミルクのオンライン販売、定期便受付開始</p></li>
+      <li><p class="d">2026.03.20</p><p class="t">ちえのわ</p><p class="x">春季ジェラートに新フレーバーを追加しました</p></li>
+      <li><p class="d">2026.03.11</p><p class="t">地域</p><p class="x">上西春別中学校「ミルフェス」に講師として参加</p></li>
+      <li><p class="d">2026.02.28</p><p class="t">イベント</p><p class="x">別海町マルシェに今期も出店します</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="ft">
+    <p class="ft-brand">有限会社ジェイファームシマザキ</p>
+    <p class="ft-en">J-Farm Shimazaki — Betsukai, Hokkaido</p>
+    <p class="ft-info">
+      〒086-0205　北海道野付郡別海町泉川57-11<br/>
+      TEL 015-377-3837　／　FAX 015-377-2810
+    </p>
+    <nav class="ft-nav">
+      <a href="#philosophy">理念</a>
+      <a href="#business">事業内容</a>
+      <a href="#soukengyu">壮健牛</a>
+      <a href="#community">地域とともに</a>
+      <a href="#history">沿革</a>
+      <a href="#recruit">採用情報</a>
+      <a href="#news">お知らせ</a>
+    </nav>
+    <p class="ft-copy">© <span id="yr">2026</span> J-Farm Shimazaki Co., Ltd.</p>
+    <p class="ft-mock">※本サイトはリニューアル提案用のモックです。一部に仮の情報・数値が含まれます。挿絵はすべてオリジナルのイラストレーションです。</p>
+  </div>
+</footer>
+
+<script>
+// ── reveal（一度だけ、ふわっと）─────────────────────────────────────
+(() => {
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const d = +e.target.dataset.delay || 0;
+      setTimeout(() => e.target.setAttribute('data-in','1'), d);
+      io.unobserve(e.target);
+      const c = e.target.querySelector?.('[data-count]') || (e.target.matches?.('[data-count]') ? e.target : null);
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:.06 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+})();
+
+// ── count-up ───────────────────────────────────────────────────────
+(() => {
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = +el.dataset.count;
+      const suffix = el.querySelector('small');
+      const t0 = performance.now(), dur = 1400;
+      const tick = (t) => {
+        const p = Math.min((t - t0) / dur, 1);
+        const v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        el.firstChild.textContent = target >= 1000 && target !== 1948 ? v.toLocaleString() : v;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, { threshold:.5 });
+  document.querySelectorAll('[data-count]').forEach(el => io.observe(el));
+})();
+
+// ── header ─────────────────────────────────────────────────────────
+(() => {
+  const hd = document.getElementById('hd');
+  const onScroll = () => hd.classList.toggle('solid', scrollY > innerHeight * .72);
+  addEventListener('scroll', onScroll, { passive:true }); onScroll();
+})();
+
+// ── mobile menu ────────────────────────────────────────────────────
+(() => {
+  const b = document.getElementById('burger'), m = document.getElementById('mmenu');
+  const close = () => { document.body.classList.remove('menu-open'); m.classList.remove('open'); };
+  b.addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+    m.classList.toggle('open');
+  });
+  m.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+})();
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
