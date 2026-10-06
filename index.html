@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>有限会社ジェイファームシマザキ｜北海道別海町の酪農</title>
-<meta name="description" content="1948年、別海町泉川に入植。牛1,200頭・草地490haで、自給飼料中心の循環型酪農を営んでいます。しまざき壮健牛、A2ミルク、ちえのわジェラート。"/>
+<meta name="description" content="1948年、別海町泉川に入植。牛1,200頭・草地490haで、自給飼料中心の循環型酪農を営んでいます。ミルワングランプリ2026第2位。しまざき壮健牛、A2ミルク、ちえのわジェラート。"/>
 <meta name="theme-color" content="#DCE9F2"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="有限会社ジェイファームシマザキ｜北海道別海町の酪農"/>
@@ -166,6 +166,49 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45
   margin-top:10px;text-align:right;
   font-family:var(--f-latin);font-style:italic;font-size:12.5px;color:var(--ink-mute);
   letter-spacing:.05em;
+}
+
+/* ── voice（三代目の言葉：実写1枚＋五箇条） ───────────────────────── */
+.voice{padding-top:clamp(72px,11vw,130px)}
+.voice-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center}
+.voice-grid .photo{position:relative}
+.voice-grid .photo img{width:100%;height:auto;aspect-ratio:8/5;object-fit:cover}
+.voice-grid .photo .cap{margin-top:10px;text-align:right;font-family:var(--f-latin);font-style:italic;font-size:12.5px;color:var(--ink-mute);letter-spacing:.05em}
+.voice h2{font-size:clamp(26px,4vw,38px);letter-spacing:.12em;margin-top:6px;line-height:1.7}
+.voice .vlede{font-family:var(--f-display);color:var(--sage);font-size:15px;letter-spacing:.08em;margin-top:8px}
+.voice .body{margin-top:18px;font-size:14.5px}
+.voice .body + .body{margin-top:12px}
+.voice .who{margin-top:18px;font-size:12.5px;color:var(--ink-mute);letter-spacing:.14em}
+@media(max-width:820px){.voice-grid{grid-template-columns:1fr;gap:22px}}
+.gokajo{margin-top:clamp(44px,7vw,80px);border-top:1px solid var(--line)}
+.gokajo-head{display:flex;align-items:baseline;gap:16px;padding:22px 0 6px}
+.gokajo-head .kicker{font-size:15px}
+.gokajo-head h3{font-size:17px;letter-spacing:.14em}
+.gokajo li{display:grid;grid-template-columns:64px 1fr;gap:clamp(12px,2.5vw,28px);padding:20px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+.gokajo .gn{font-family:var(--f-latin);font-style:italic;font-size:22px;color:var(--ochre);line-height:1}
+.gokajo h4{font-size:17px;letter-spacing:.08em}
+.gokajo p{font-size:13.5px;color:var(--ink-body);margin-top:6px;max-width:46em}
+.gokajo .q{color:var(--ink);font-family:var(--f-display)}
+.journal{margin-top:clamp(44px,7vw,80px)}
+.journal-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-top:18px}
+.journal-head .kicker{font-size:15px}
+.journal-head .jd{font-family:var(--f-latin);font-style:italic;font-size:12.5px;color:var(--ink-mute);letter-spacing:.06em}
+.journal-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.6vw,18px);margin-top:18px}
+.journal-grid figure{margin:0}
+.journal-grid img{width:100%;object-fit:cover}
+.journal-grid .wide{grid-column:span 3}
+.journal-grid .wide img{aspect-ratio:16/10}
+.journal-grid .tall{grid-column:span 2}
+.journal-grid .tall img{aspect-ratio:4/5}
+.journal-grid figcaption{margin-top:8px;font-size:12px;color:var(--ink-mute);line-height:1.7;letter-spacing:.02em}
+@media(max-width:540px){
+  .journal-head{flex-direction:column;gap:2px}
+  .journal-head .kicker{white-space:nowrap}
+  .journal-grid{gap:12px}
+  .journal-grid .wide{grid-column:span 6}
+  .journal-grid .tall{grid-column:span 3}
+  .journal-grid .tall:last-child{grid-column:span 6}
+  .journal-grid .tall:last-child img{aspect-ratio:16/10}
 }
 
 /* ── business divisions ──────────────────────────────────────────── */
@@ -371,6 +414,7 @@ footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:cla
 </header>
 <div class="mmenu" id="mmenu">
   <a href="#philosophy"><span class="en">Philosophy</span>理念</a>
+  <a href="#voice"><span class="en">Voice</span>三代目の言葉</a>
   <a href="#business"><span class="en">Business</span>事業内容</a>
   <a href="#soukengyu"><span class="en">Brand</span>壮健牛</a>
   <a href="#community"><span class="en">Community</span>地域とともに</a>
@@ -408,10 +452,54 @@ footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:cla
 <!-- ═══ NUMBERS ═══ -->
 <div class="nums" id="numbers">
   <div class="num rv"><div class="v" data-count="1948">0</div><div class="l">創業</div><div class="n">昭和23年、初代・昭七が入植</div></div>
-  <div class="num rv" data-delay="100"><div class="v" data-count="1200">0<small>頭</small></div><div class="l">総飼育頭数</div><div class="n">成牛（搾乳牛）約500頭を含む</div></div>
+  <div class="num rv" data-delay="100"><div class="v" data-count="1200">0<small>頭</small></div><div class="l">飼養頭数</div><div class="n">子牛を除く。搾乳牛舎は400頭×2棟</div></div>
   <div class="num rv" data-delay="200"><div class="v" data-count="490">0<small>ha</small></div><div class="l">自社草地</div><div class="n">所有290ha＋借地200ha</div></div>
   <div class="num rv" data-delay="300"><div class="v" data-count="4360">0<small>t</small></div><div class="l">年間生乳生産</div><div class="n">粗飼料はほぼ全量自給</div></div>
 </div>
+
+<!-- ═══ VOICE（三代目の言葉） ═══ -->
+<section class="voice" id="voice">
+  <div class="wrap">
+    <div class="voice-grid">
+      <div class="photo rv">
+        <img src="assets/photo/yosuke_parlor.jpg" width="1400" height="875" alt="搾乳牛舎で笑顔で話す三代目・島崎洋介" loading="lazy"/>
+        <p class="cap">In the milking barn — 搾乳牛舎で（2026.9.15）</p>
+      </div>
+      <div class="rv" data-delay="120">
+        <p class="kicker">Voice — 三代目</p>
+        <h2>こだわりは、ない。<br/>当たり前を、ちゃんとやる。</h2>
+        <p class="vlede">ミルワングランプリ 2026 ─ 第2位</p>
+        <p class="body">組合員の牧場の牛乳を番号だけで飲み比べて順位を決める、ちえのわの「ミルワングランプリ」。2026年、ジェイファームシマザキの牛乳が第2位に選ばれました。5〜6回目の出品で、初めての入賞です。</p>
+        <p class="body">こだわりを聞かれて、代表の答えは「こだわりっていうこだわりはない。当たり前のことをちゃんとやってるだけ」。特別な資材も裏技もない。その「当たり前」を、牧場を歩きながら聞きました。</p>
+        <p class="who">三代目代表　島崎 洋介</p>
+      </div>
+    </div>
+
+    <div class="gokajo rv">
+      <div class="gokajo-head"><p class="kicker">Five rules</p><h3>島崎流・五箇条</h3></div>
+      <ul>
+      <li><p class="gn">01</p><div><h4>当たり前を、全部やる。</h4><p><span class="q">「特段これを使えばとか、こうすればっていうのはない」</span>。餌のメニューは乳成分を見ながら微調整する。それを毎日、全部やる。</p></div></li>
+      <li><p class="gn">02</p><div><h4>餌は、永遠の課題。</h4><p>デントコーンと牧草が軸。分娩後・泌乳ピーク・乾乳前で牛群を分け、群ごとに餌を組む。同じ餌でも季節と寒暖差で合わなくなる。<span class="q">「いいと思って組み替えても、実は良くなかったとか」</span>。</p></div></li>
+      <li><p class="gn">03</p><div><h4>臭いのつく牛乳は、出さない。</h4><p>サイレージは発酵品質にいちばんこだわる。基本は乳酸菌、ギ酸は水分の多い早い草のときだけ。<span class="q">「良いサイレージは、牛が食って、乳が出るサイレージ」</span>。</p></div></li>
+      <li><p class="gn">04</p><div><h4>毎日朝晩、人の目で見る。</h4><p>あえてロボットでなくパラレルパーラー。牛乳が急に出なくなった牛を、目で見つける。可動部は地下に置き、牛も人も静かに働ける。</p></div></li>
+      <li><p class="gn">05</p><div><h4>一番気を使うのは、搾らない牛。</h4><p>乾乳・分娩舎は、牛舎の移動ひとつで分娩事故が増える。子牛は2ヶ月で離乳。<span class="q">「子牛のときに元気に育っていないと、いい乳牛にはならない。本当にならない」</span>。</p></div></li>
+      </ul>
+    </div>
+
+    <div class="journal rv">
+      <div class="journal-head"><p class="kicker">Farm journal</p><p class="jd">Shot on 15 September 2026 — 取材の日の記録</p></div>
+      <div class="journal-grid">
+        <figure class="wide"><img src="assets/photo/parlor.jpg" width="1000" height="562" alt="パラレルパーラーで搾乳の仕組みを説明する島崎洋介" loading="lazy" style="object-position:center 40%"/><figcaption>パラレルパーラー。「人が一頭一頭、牛を見れるから」</figcaption></figure>
+        <figure class="wide"><img src="assets/photo/stage.jpg" width="900" height="650" alt="ちえのわ交流会の壇上で表彰される島崎洋介" loading="lazy" style="object-position:center 45%"/><figcaption>交流会の壇上で。初めての入賞</figcaption></figure>
+        <figure class="tall"><img src="assets/photo/calf.jpg" width="800" height="1422" alt="敷きわらの上で休む生まれたばかりの子牛" loading="lazy" style="object-position:center 58%"/><figcaption>子牛舎。毎月60〜80頭が生まれる</figcaption></figure>
+        <figure class="tall"><img src="assets/photo/cow.jpg" width="800" height="1422" alt="搾乳牛舎で正面を向くホルスタイン" loading="lazy" style="object-position:center 38%"/><figcaption>一棟400頭の搾乳牛舎</figcaption></figure>
+        <figure class="tall"><img src="assets/photo/rolls.jpg" width="900" height="843" alt="牧草ロールに手を置いて話す島崎洋介" loading="lazy" style="object-position:62% center"/><figcaption>ロールの前で。サイレージの話がいちばん長かった</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline"/>
 
 <!-- ═══ BUSINESS ═══ -->
 <section id="business">
@@ -431,11 +519,11 @@ footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:cla
         <p class="no">01 — Dairy</p>
         <h3>酪農部門</h3>
         <p class="dlede">自給粗飼料中心の循環型酪農</p>
-        <p class="body">所有290ha＋借地200haの草地で生産した粗飼料を中心に、堆肥還元による循環型の酪農を実践。2024年からはA2ミルクの生産も開始しました。</p>
+        <p class="body">所有290ha＋借地200haの草地で生産した粗飼料を中心に、堆肥還元による循環型の酪農を実践。一棟400頭の搾乳牛舎が二棟並び、パラレルパーラーで毎日朝晩、人の目で一頭ずつ見ています。2024年からはA2ミルクの生産も開始しました。</p>
         <dl class="dstats">
-          <div><dt>搾乳牛</dt><dd>約500頭</dd></div>
-          <div><dt>総飼育頭数</dt><dd>約1,200頭</dd></div>
-          <div><dt>年間生乳</dt><dd>約4,360t</dd></div>
+          <div><dt>搾乳牛舎</dt><dd>400頭×2棟</dd></div>
+          <div><dt>飼養頭数</dt><dd>約1,200頭</dd></div>
+          <div><dt>分娩</dt><dd>月60〜80頭</dd></div>
         </dl>
       </div>
     </div>
@@ -553,7 +641,7 @@ footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:cla
     <ul class="progs">
       <li class="rv">
         <p class="pk">Project 01</p>
-        <div><h4>ちえのわ事業協同組合</h4><p class="pb">別海の酪農家に呼びかけ、共同で立ち上げた組合。地域の素材を使ったジェラートを開発・販売し、酪農と地域経済の循環をつくっています。</p></div>
+        <div><h4>ちえのわ事業協同組合</h4><p class="pb">別海の酪農家に呼びかけ、共同で立ち上げた組合。牛乳を牧場ごとに分けて売り、ジェラートを開発・販売。「自分で搾った牛乳がパックになって、従業員が飲む。美味しくないと困る」。スタッフの意識が変わりました。</p></div>
         <p class="pm">2018年設立<br/>組合員5名</p>
       </li>
       <li class="rv">
@@ -612,7 +700,7 @@ footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:cla
     <div class="feat">
       <div class="f rv"><h4>役割分業制</h4><p>搾乳／育成／哺育に分かれた業務体系で、未経験者も着実にステップアップ。</p></div>
       <div class="f rv" data-delay="100"><h4>権限と目標管理</h4><p>場長権限を明確化し、定例MTGで目標を共有。意思決定が早い。</p></div>
-      <div class="f rv" data-delay="200"><h4>ダイバーシティ</h4><p>性別・年齢・経歴を問わず、酪農に向き合う仲間を歓迎します。</p></div>
+      <div class="f rv" data-delay="200"><h4>ダイバーシティ</h4><p>スタッフ20人のうち15人が中国・ベトナム・フィリピン・インドネシアから。「言葉が違うだけ」。国籍・性別・経歴を問いません。</p></div>
       <div class="f rv" data-delay="300"><h4>研修牧場構想</h4><p>新規就農希望者を仲間として育て、独立まで伴走する仕組みを整備中。</p></div>
     </div>
 
@@ -698,12 +786,9 @@ footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:cla
       <h2>お知らせ</h2>
     </div>
     <ul class="news rv">
-      <li><p class="d">2026.04.12</p><p class="t">日々</p><p class="x">春の哺育シーズン、子牛が次々と生まれています</p></li>
-      <li><p class="d">2026.04.05</p><p class="t">採用</p><p class="x">採用説明会を弟子屈町「牛肉本舗くろ」にて開催</p></li>
-      <li><p class="d">2026.03.28</p><p class="t">商品</p><p class="x">A2ミルクのオンライン販売、定期便受付開始</p></li>
-      <li><p class="d">2026.03.20</p><p class="t">ちえのわ</p><p class="x">春季ジェラートに新フレーバーを追加しました</p></li>
-      <li><p class="d">2026.03.11</p><p class="t">地域</p><p class="x">上西春別中学校「ミルフェス」に講師として参加</p></li>
-      <li><p class="d">2026.02.28</p><p class="t">イベント</p><p class="x">別海町マルシェに今期も出店します</p></li>
+      <li><p class="d">2026.09.16</p><p class="t">ちえのわ</p><p class="x">ちえのわ「取材ファイル file.02」で当牧場が紹介されました（紙面とショート動画「こだわりは、ない。」）</p></li>
+      <li><p class="d">2026.08.22</p><p class="t">イベント</p><p class="x">「SHIMAZAKI MARCHE 2026」が牧場の西口倉庫前で開かれました</p></li>
+      <li><p class="d">2026.05.30</p><p class="t">受賞</p><p class="x">ちえのわ交流会「ミルワングランプリ 2026」で第2位に選ばれました</p></li>
     </ul>
   </div>
 </section>
@@ -719,6 +804,7 @@ footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:cla
     </p>
     <nav class="ft-nav">
       <a href="#philosophy">理念</a>
+      <a href="#voice">三代目の言葉</a>
       <a href="#business">事業内容</a>
       <a href="#soukengyu">壮健牛</a>
       <a href="#community">地域とともに</a>
@@ -727,7 +813,7 @@ footer{background:var(--sky);padding:clamp(60px,9vw,100px) 0 34px;margin-top:cla
       <a href="#news">お知らせ</a>
     </nav>
     <p class="ft-copy">© <span id="yr">2026</span> J-Farm Shimazaki Co., Ltd.</p>
-    <p class="ft-mock">※本サイトはリニューアル提案用のモックです。一部に仮の情報・数値が含まれます。挿絵はすべてオリジナルのイラストレーションです。</p>
+    <p class="ft-mock">※本サイトはリニューアル提案用のモックです。一部に仮の情報・数値が含まれます。挿絵はオリジナルのイラストレーション、写真は2026年9月15日の取材時に撮影したものです。</p>
   </div>
 </footer>
 
